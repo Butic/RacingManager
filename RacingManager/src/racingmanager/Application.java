@@ -69,6 +69,16 @@ public class Application {
      * Кнопка удаления гонщика.
      */
     private JButton deleteButton;
+    
+    /**
+     * Кнопка сохранения таблицы гонщиков в файл.
+     */
+    private JButton saveButton;
+    
+    /**
+     * Кнопка загрузки таблицы гонщиков из файла.
+     */
+    private JButton loadButton;
 
     /**
      * Кнопка перехода к списку команд.
@@ -109,6 +119,11 @@ public class Application {
      * Нижняя панель экранной формы.
      */
     private JPanel bottomPanel;
+    
+    /**
+     * Менеджер для сохранения и загрузки данных из файла.
+     */
+    private FileManager fileManager;
     
     /**
      * Собственное исключение для некорректного имени гонщика.
@@ -158,6 +173,9 @@ public class Application {
      * </ul>
      */
     public void buildWindow() {
+    	
+    	// Создание менеджера для работы с файлами.
+    	fileManager = new FileManager();
 
         // Создание главного окна приложения.
         racingManager = new JFrame("Менеджер соревнований");
@@ -172,6 +190,18 @@ public class Application {
         addButton = new JButton("Добавить");
         editButton = new JButton("Изменить");
         deleteButton = new JButton("Удалить");
+        saveButton = new JButton("Сохранить");
+        loadButton = new JButton("Загрузить");
+        
+        // Обработка нажатия кнопки сохранения данных.
+        saveButton.addActionListener(e -> {
+            fileManager.save(racingManager, model);
+        });
+        
+        // Обработка нажатия кнопки загрузки данных.
+        loadButton.addActionListener(e -> {
+            fileManager.load(racingManager, model);
+        });
 
         // Настройка подсказок для кнопок.
         addButton.setToolTipText("Добавить нового гонщика");
@@ -185,6 +215,11 @@ public class Application {
         toolBar.add(addButton);
         toolBar.add(editButton);
         toolBar.add(deleteButton);
+        
+        toolBar.addSeparator();
+        
+        toolBar.add(saveButton);
+        toolBar.add(loadButton);
 
         // Размещение панели инструментов в верхней части окна.
         racingManager.add(toolBar, BorderLayout.NORTH);
@@ -198,9 +233,9 @@ public class Application {
 
         // Создание исходных данных таблицы.
         Object[][] data = {
-        	    {"Кими Антонелли", "Mercedes", 340},
-        	    {"Джордж Расселл", "Mercedes", 238},
-        	    {"Льюис Хэмилтон", "Ferrari", 229}
+        	    {"Кими Антонелли", "Mercedes", 380},
+        	    {"Макс Ферстаппен", "Red Bull", 261},
+        	    {"Льюис Хэмилтон", "Ferrari", 259}
         	};
 
         // Создание модели таблицы.
