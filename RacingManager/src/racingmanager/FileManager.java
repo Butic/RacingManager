@@ -6,6 +6,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.BufferedReader;
 import java.io.FileReader;
+import java.io.FileNotFoundException;
 
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
@@ -168,6 +169,15 @@ public class FileManager {
                 parent,
                 "Данные успешно загружены"
             );
+
+        } catch (FileNotFoundException ex) {
+
+            JOptionPane.showMessageDialog(
+                parent,
+                "Файл не найден"
+            );
+
+            ex.printStackTrace();
 
         } catch (IOException ex) {
 

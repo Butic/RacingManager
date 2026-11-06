@@ -1,1 +1,1 @@
-typeSearchIndex = [{"l":"All Classes and Interfaces","u":"allclasses-index.html","k":"18"},{"p":"racingmanager","l":"Application"},{"p":"racingmanager","l":"Application.MyException","k":"13"}];updateSearchResults();
+typeSearchIndex = [{"l":"All Classes and Interfaces","u":"allclasses-index.html","k":"18"},{"p":"racingmanager","l":"Application"},{"p":"racingmanager","l":"FileManager"},{"p":"racingmanager","l":"Application.MyException","k":"13"}];updateSearchResults();

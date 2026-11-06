@@ -11,7 +11,7 @@ import javax.swing.table.DefaultTableModel;
  * информации об их командах и набранных очках.
  *
  * @author Бутаков Святослав 5316
- * @version 3.0 (Обработка исключений)
+ * @version 4.0 (Сохранение и загрузка данных из файла)
  */
 public class Application {
 
@@ -231,15 +231,8 @@ public class Application {
             "Очки"
         };
 
-        // Создание исходных данных таблицы.
-        Object[][] data = {
-        	    {"Кими Антонелли", "Mercedes", 380},
-        	    {"Макс Ферстаппен", "Red Bull", 261},
-        	    {"Льюис Хэмилтон", "Ferrari", 259}
-        	};
-
         // Создание модели таблицы.
-        model = new DefaultTableModel(data, columns);
+        model = new DefaultTableModel(columns, 0);
 
         // Создание таблицы.
         racersTable = new JTable(model);
